@@ -1,5 +1,7 @@
 # weblog
 
+WeBlog uses the JsonPlaceHolder api to create a simple vue blog application
+
 ## Project setup
 ```
 npm install
