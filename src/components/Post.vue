@@ -1,18 +1,18 @@
 <template>
   <div class="container">
       <div class="post-info">
-        <p> {{post.title| capitalize}}</p>
+        <p style="font-weight: bold;"> {{post.title| capitalize}}</p>
         <p>{{ post.body | capitalize }}</p>
       </div>
       <div class="post-info">
           <ul>
               <li v-for="comment in comments" :key="comment.id">
-                  <p><i class="material-icons">person</i>{{ comment.name | capitalize }}</p>
+                  <p style="font-weight: bold;"><i class="material-icons">person</i>{{ comment.name | capitalize }}</p>
                   <p>{{ comment.body | capitalize }}</p>
               </li>
           </ul>
           <div>
-              <button @click="commentIs = !commentIs" class="btn-large waves-effect waves-light "> Add Comment</button>
+              <button @click="commentIs = !commentIs" class="btn-large waves-effect grey darken-3 "> Add Comment</button>
               <div v-if="commentIs" class="row">
                   <form @submit.prevent="addComments" class="col s12">
                       <div class="row">
@@ -25,7 +25,7 @@
                         <input type="text" name="comment" id="comment" v-model="details.body" class="validate">
                       </div>
                     
-                    <button class="btn waves-effect waves-light btn">Submit</button>
+                    <button class="btn waves-effect grey darken-3 btn">Submit</button>
                     </div>
                   </form>
                   
