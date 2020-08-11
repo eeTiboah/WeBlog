@@ -1,26 +1,32 @@
 <template>
-  <div>
-      <div>
-        <h2>Hi there</h2>
-        <p> {{post.title}}</p>
-        <p>{{ post.body }}</p>
+  <div class="container">
+      <div class="post-info">
+        <p> {{post.title| capitalize}}</p>
+        <p>{{ post.body | capitalize }}</p>
       </div>
-      <div>
+      <div class="post-info">
           <ul>
               <li v-for="comment in comments" :key="comment.id">
-                  <p>{{ comment.name }}</p>
-                  <p>{{ comment.body }}</p>
+                  <p><i class="material-icons">person</i>{{ comment.name | capitalize }}</p>
+                  <p>{{ comment.body | capitalize }}</p>
               </li>
           </ul>
           <div>
-              <button @click="commentIs = !commentIs">Comment</button>
-              <div v-if="commentIs">
-                  <form @submit.prevent="addComments">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" v-model="details.name">
-                    <label for="comment">Comment</label>
-                    <input type="text" name="comment" id="comment" v-model="details.body">
-                    <button>Submit</button>
+              <button @click="commentIs = !commentIs" class="btn-large waves-effect waves-light "> Add Comment</button>
+              <div v-if="commentIs" class="row">
+                  <form @submit.prevent="addComments" class="col s12">
+                      <div class="row">
+                      <div class="col s12">
+                        <label for="name">Your Name</label>
+                        <input type="text" name="name" id="name" v-model="details.name" class="validate">
+                      </div>
+                      <div class="col s12">
+                        <label for="comment">Your Comment</label>
+                        <input type="text" name="comment" id="comment" v-model="details.body" class="validate">
+                      </div>
+                    
+                    <button class="btn waves-effect waves-light btn">Submit</button>
+                    </div>
                   </form>
                   
               </div>
@@ -30,7 +36,6 @@
 </template>
 
 <script>
-
 export default {
     data(){
         return {
@@ -65,14 +70,30 @@ export default {
             )
         },
         addComments(){
-            this.comments.push(this.details)
-            this.details.name = ""
-            this.details.body = ""
+            if (this.details.name && this.details.body){
+                this.comments.push(this.details)
+                this.details = {}
+            }
+            
         }
-    }
+    },
+    filters: {
+        capitalize: function (value) {
+            if (!value) return ''
+            value = value.toString()
+            return value.charAt(0).toUpperCase() + value.slice(1)
+  }
+}
 }
 </script>
 
-<style>
+<style scoped>
+.container{
+    margin: auto;
+    width: 50%;
+}
 
+.post-info{
+    margin: 20px;
+}
 </style>

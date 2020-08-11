@@ -1,7 +1,11 @@
 <template>
-  <div>
-      <nav>
-          <router-link :to="{name: 'Home'}"><span class="nav-title">WeBlog</span></router-link>
+  <div class="navbar">
+      <nav class="nav-extended grey darken-4">
+          <div class="nav-content">
+          <router-link :to="{name: 'Home'}">
+              <span class="nav-title">WeBlog</span>
+          </router-link>
+          </div>
       </nav>
   </div>
 </template>
@@ -13,5 +17,7 @@ export default {
 </script>
 
 <style>
-
-</style>template
+.navbar nav{
+    padding: 0 30px;
+}
+</style>

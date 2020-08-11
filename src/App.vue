@@ -15,5 +15,12 @@ export default {
 </script>
 
 <style>
-
+body{
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 1.2em;
+  
+}
+li{
+  color: #424242;
+}
 </style>

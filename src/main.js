@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import VuePaginate from 'vue-paginate'
 import { routes } from './router/index'
+import { store } from './store/store'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
@@ -18,5 +19,6 @@ Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
+  store,
   router,
 }).$mount('#app')
